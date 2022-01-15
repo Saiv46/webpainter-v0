@@ -1,0 +1,104 @@
+/* (Default) Dark theme */
+:root, :root[theme="dark"] {
+	--fontcolor-a: rgb(200, 200, 200);
+	--fontcolor-b: rgb(150, 150, 150);
+	--fontcolor-c: rgb(50, 50, 50);
+	--bgcolor-a: rgb(50, 50, 50);
+	--bgcolor-b: rgb(70, 70, 70);
+	--bgcolor-c: rgb(100, 100, 100);
+	--invert-icons: 1;
+}
+/* Light theme */
+:root[theme="light"] {
+	--fontcolor-a: rgb(50, 50, 50);
+    --fontcolor-b: rgb(70, 70, 70);
+    --fontcolor-c: rgb(158, 158, 158);
+    --bgcolor-a: rgb(255, 255, 255);
+    --bgcolor-b: rgb(230, 230, 230);
+    --bgcolor-c: rgb(210, 210, 210);
+    --invert-icons: 0;
+}
+
+/* Base positioning & styling */
+body {
+	margin: 0;
+	background: var(--bgcolor-b);
+	color: var(--fontcolor-a);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	flex-flow: column nowrap;
+	overflow: hidden;
+}
+:not(:defined) {display: none}
+app-canvas {
+	flex: 1 0 auto;
+}
+app-header, app-footer {
+	z-index: 9999;
+}
+::-webkit-scrollbar {width: .5em}
+::-webkit-scrollbar-button {display: none}
+::-webkit-scrollbar-track {background: var(--bgcolor-b)}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {background: var(--bgcolor-a)}
+
+/* Component styling */
+input, .btn {
+	font-size: 1.1em;
+	border-radius: 6px;
+}
+input {
+	transition: all .2s;
+	border: solid 1px transparent;
+	padding: .2em;
+	font-size: 1.1em;
+	margin: .1em;
+}
+input:focus {outline: none}
+input:invalid {border-color: #F00; box-shadow: 0 0 1px rgba(255, 0, 0, 0.5)}
+.btn {
+	color: var(--fontcolor-a);
+	display: inline-block;
+	padding: .3em .5em;
+	margin: .25em;
+	transition: background .5s;
+}
+.btn:hover {background: var(--bgcolor-a)}
+
+dialog {
+	display: none;
+	min-width: var(--width);
+	min-height: var(--height);
+	background: var(--bgcolor-c);
+	color: var(--fontcolor-a);
+	border: none;
+	text-align: center;
+	padding-top: 2.5em
+}
+dialog[open] {display: block}
+dialog::before {
+	float: left;
+    position: relative;
+    content: attr(title);
+    margin: -2.5em -1em;
+    padding: .5em 1em;
+    width: 100%;
+    color: var(--fontcolor-a);
+    background: var(--bgcolor-a);
+}
+dialog::backdrop, dialog + .backdrop {
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(5px);
+}
+
+code {
+	display: block;
+	border: var(--fontcolor-a) solid 1px;
+	padding: 1em; 
+	margin: 1em;
+	color: var(--fontcolor-a);
+	background: var(--bgcolor-a);
+}

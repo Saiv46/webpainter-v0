@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8"/>
+		<title>WebPainter v0</title>		
+		
+		<!-- Libraries & Polyfills -->
+		<script src="lib/undo-canvas.js"></script>
+		<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-loader.js"></script>
+		<!-- Web Components -->
+		<script src="components/header.js"></script>
+		<script src="components/aside.js"></script>
+		<script src="components/footer.js"></script>
+		<script src="components/colorPicker.js"></script>
+		<script src="components/optionsPicker.js"></script>
+		<script src="components/toolPicker.js"></script>
+		<script src="components/canvasLayer.js"></script>
+		<script src="components/canvas.js"></script>
+		<!-- Main scripts -->
+		<link rel="stylesheet" href="styles.css"/>
+		<script src="abstract.js"></script>
+		<script src="script.js"></script>
+		<script defer src="custom.js"></script>
+	</head>
+	<body>
+		<!-- App -->
+		<app-header></app-header>
+		<app-aside style="left: 0px; top: 30px">
+			<span slot="title">Options</span>
+			<options-picker></options-picker>
+		</app-aside>
+		<app-aside style="left: 0px; top: 360px">
+			<span slot="title">Palette</span>
+			<color-picker></color-picker>
+		</app-aside>
+		<app-aside style="left: 500px; top: 530px">
+			<span slot="title">Tools</span>
+			<tool-picker></tool-picker>
+		</app-aside>
+		<app-canvas></app-canvas>
+		<app-footer>
+			<span slot="status" id="status">Loading...</span>
+			<span slot="fileinfo" id="fileinfo"></span>
+		</app-footer>
+		<!-- Все диалоговые окна -->
+		<dialog id="blank" title="New file"><form>
+			<p>
+				<label>File name</label>
+				<input type="text" name="name" value="Unnamed"/>
+			</p>
+			<p>
+				<label>Width (px)</label>
+				<input type="number" min="1" max="4096" name="width" value="1024"/>
+			</p>
+			<p>
+				<label>Height (px)</label>
+				<input type="number" min="1" max="4096" name="height" value="768"/>
+			</p>
+			<p>
+				<a href="#" class="btn create" hide>New</a> &nbsp;
+				<a href="#" class="btn" hide>Cancel</a>
+			</p>
+		</form></dialog>
+		<dialog id="about" title="About">
+			<h2>
+				WebPainter v0
+			</h2>
+
+			<p>
+				Author: Alexander Ivanov (@Saiv46)<br/>
+				The native and framework-free online painter.<br/>
+				Made as a school project in March 2019.<br/>
+				<br/>
+				Licensed under MIT<br/>
+				Libraries used:<br/>
+				<ul>
+					<li>UndoCanvas.js</li>
+					<li>Web Component polyfill</li>
+				</ul>
+			</p>
+
+			<a href="#" class="btn" hide>Cancel</a>
+		</dialog>
+		<dialog id="egg" title="...">
+			<code>RXNsaSB2eSBjaGl0YWV0ZSBldG8gc29vYmNoZW5pZSwgdG8gdm96bW96aG5vIHZhbSBuZWZpZyBkZWxhdCcgc2h0byBuYXNobGkgcGFzaGFsa3Uu</code>
+			<a href="#" class="btn" hide>Cancel</a>
+		</dialog>
+		<dialog id="welcome" title="Welcome">
+			<a href="#" class="btn" hide>Cancel</a>
+		</dialog>
+		<dialog id="error" title="Error">
+			Error occured during initializating:<br/>
+			<code></code>
+			<a href="?" class="btn">Reload</a>
+		</dialog>
+	</body>
+</html>
